@@ -227,7 +227,8 @@ export abstract class Tool extends Interface {
 
   /** returns clone with variation in env vars */
   public _withEnv(env: NodeJS.ProcessEnv): this {
-    const ret = Object.create(this);
+    // @ts-ignore-next-line
+    const ret = new this.constructor(this);
     ret.extraEnv = { ...this.extraEnv };
     for (const key in env) {
       if (Object.hasOwnProperty.call(env, key)) {
