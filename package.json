@@ -7,10 +7,11 @@
   "types": "./lib/module.d.ts",
   "scripts": {
     "prepare": "npm run build",
+    "clean": "node -e 'fs.rmSync(\"lib\", { recursive: true, force: true });'",
     "test": "npx c8 -r text -r html -r lcov --all --src src/ -x \"**/*.spec.*\" -x \"**/__test-helpers\" ava src/*.spec.ts",
     "lint": "npx prettier \"**\" --ignore-path=.gitignore --arrow-parens=avoid --trailing-comma=none --end-of-line=lf -uw",
     "docs": "npx typedoc",
-    "build": "rm -rf lib && npx tsc --build ./tsconfig.build.json && npx rollup -c"
+    "build": "npm run clean && npx tsc --build ./tsconfig.build.json && npx rollup -c"
   },
   "files": [
     "lib",
