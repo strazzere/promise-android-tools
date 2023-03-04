@@ -31,7 +31,9 @@
 
     /* Experimental Options */
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+
+    "typeRoots": ["./src/*.ts"]
   },
   "include": ["src"]
 }
